@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="P.png">
-    <title>Carspire Thailand - Automotive</title>
+    <title>Carspire - Automotive Excellence</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -41,71 +44,96 @@
         /* Header */
         header {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0 20px;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 12px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
         .logo-text {
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 600;
             background: linear-gradient(135deg, #ff4500, #ffd700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .floating-nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         nav ul {
             display: flex;
-            gap: 40px;
+            gap: 10px;
             list-style: none;
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
             position: relative;
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            display: block;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        nav a:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         nav a.settings-icon {
-            font-size: 28px;
-            margin-left: -15px;
-            filter: brightness(0) invert(1);
+            font-size: 20px;
+            padding: 12px 16px;
+            line-height: 1;
         }
 
         nav a.settings-icon:hover {
-            transform: rotate(90deg);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ff4500, #ffd700);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            transform: translateY(-2px) rotate(90deg);
         }
 
         /* Hero Section */
@@ -341,11 +369,32 @@
             }
             
             header {
-                padding: 20px;
+                top: 10px;
+                padding: 0 10px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .floating-nav {
+                padding: 12px 20px;
+                gap: 15px;
+            }
+
+            .logo {
+                padding: 12px 20px;
+            }
+
+            .logo-text {
+                font-size: 16px;
             }
             
             nav ul {
-                gap: 20px;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 6px 10px;
             }
             
             .featured {
@@ -361,25 +410,67 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transition: opacity 0.35s cubic-bezier(0.32, 0.72, 0, 1);
         }
 
         .settings-modal.active {
             display: flex;
+            animation: modalFadeIn 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+        }
+
+        @keyframes modalFadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         .settings-content {
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(30, 30, 30, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            border-radius: 30px;
             padding: 40px;
             max-width: 500px;
             width: 90%;
             position: relative;
+            transform: translateY(-80px) scale(0.9);
+            opacity: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .settings-modal.active .settings-content {
+            animation: slideAndPop 0.5s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+        }
+
+        @keyframes slideAndPop {
+            0% {
+                transform: translateY(-80px) scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .settings-modal.closing .settings-content {
+            animation: slideUpOut 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+        }
+
+        @keyframes slideUpOut {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-80px) scale(0.9);
+                opacity: 0;
+            }
         }
 
         .settings-header {
@@ -413,7 +504,7 @@
 
         .close-btn:hover {
             color: #ff4500;
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.1);
         }
 
         .settings-section {
@@ -506,15 +597,16 @@
         <div class="logo">
             <span class="logo-text">CARSPIRETHAILAND</span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#playlists">Playlists</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#" class="settings-icon" onclick="openSettings(); return false;">⚙️</a></li>
-            </ul>
-        </nav>
+        <div class="floating-nav">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#playlists">Playlists</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#" class="settings-icon" onclick="openSettings(); return false;">⚙️</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="hero" id="home">
@@ -594,7 +686,7 @@
                 Hello everyone! We welcome you to our automotive knowledge-sharing platform. Today we'll discuss and exchange great information about cars, including basic maintenance, safe driving techniques, and little-known facts that many people may not have known before.
             </p>
             <p style="font-size: 18px; line-height: 1.8; color: #ccc; text-align: center;">
-               We hope this content will be useful to everyone who loves and is interested in cars. Whether you're a beginner who just started using a car or someone who has been driving for a long time, you can apply the knowledge from us to your daily life.
+                We hope this content will be useful to everyone who loves and is interested in cars. Whether you're a beginner who just started using a car or someone who has been driving for a long time, you can apply the knowledge from us to your daily life.
             </p>
         </div>
     </section>
@@ -610,7 +702,6 @@
                 home: "Home",
                 playlists: "Playlists",
                 about: "About",
-                contact: "Contact",
                 settings: "Settings",
                 language: "Language",
                 heroTitle: "CARSPIRETHAILAND",
@@ -641,7 +732,6 @@
                 home: "หน้าหลัก",
                 playlists: "เพลย์ลิสต์",
                 about: "เกี่ยวกับเรา",
-                contact: "ติดต่อ",
                 settings: "ตั้งค่า",
                 language: "ภาษา",
                 heroTitle: "CARSPIRETHAILAND",
@@ -865,7 +955,12 @@
 
         // Close settings modal
         function closeSettings() {
-            document.getElementById('settingsModal').classList.remove('active');
+            const modal = document.getElementById('settingsModal');
+            modal.classList.add('closing');
+            
+            setTimeout(() => {
+                modal.classList.remove('active', 'closing');
+            }, 350);
         }
 
         // Change language
@@ -885,7 +980,6 @@
             document.querySelector('nav a[href="#home"]').textContent = t.home;
             document.querySelector('nav a[href="#playlists"]').textContent = t.playlists;
             document.querySelector('nav a[href="#about"]').textContent = t.about;
-            document.querySelector('nav a[href="#contact"]').textContent = t.contact;
             
             // Hero section
             document.querySelector('.hero-content h1').textContent = t.heroTitle;
@@ -981,13 +1075,15 @@
             });
         });
 
+        // Button interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
