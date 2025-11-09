@@ -165,16 +165,16 @@
             padding: 15px 40px;
             font-size: 18px;
             border: none;
-            background: rgba(255, 80, 0, 0.6);
+            background: linear-gradient(135deg, #ff4500, #ff8c00);
             color: #fff;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.3s;
             animation: fadeInUp 1s ease-out 0.6s backwards;
-            box-shadow: 0 8px 32px -8px rgba(255, 69, 0, 0.5),
-                        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-            backdrop-filter: blur(60px) saturate(180%);
-            -webkit-backdrop-filter: blur(60px) saturate(180%);
+            box-shadow: 0 10px 30px rgba(255, 69, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -182,29 +182,18 @@
         .cta-button::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-            animation: liquidMove 4s ease-in-out infinite;
-        }
-
-        @keyframes liquidMove {
-            0%, 100% { transform: translate(0%, 0%) scale(1); }
-            33% { transform: translate(20%, 10%) scale(1.1); }
-            66% { transform: translate(-10%, 20%) scale(0.9); }
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: 50px 50px 0 0;
         }
 
         .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px -8px rgba(255, 69, 0, 0.6),
-                        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-            background: rgba(255, 80, 0, 0.7);
-        }
-
-        .cta-button:active {
-            transform: translateY(-2px) scale(0.98);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.5),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         @keyframes fadeInUp {
@@ -299,65 +288,17 @@
 
         .watch-btn {
             padding: 10px 25px;
-            background: linear-gradient(180deg,
-                rgba(255, 69, 0, 0.25) 0%,
-                rgba(255, 69, 0, 0.35) 50%,
-                rgba(255, 69, 0, 0.45) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
+            background: rgba(255, 69, 0, 0.2);
+            border: 1px solid #ff4500;
+            color: #ff4500;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(40px) saturate(200%);
-            -webkit-backdrop-filter: blur(40px) saturate(200%);
-            box-shadow: 0 4px 24px rgba(255, 69, 0, 0.3),
-                        0 1px 2px rgba(255, 255, 255, 0.25) inset,
-                        0 -1px 2px rgba(0, 0, 0, 0.1) inset,
-                        0 10px 40px rgba(255, 69, 0, 0.1);
-            position: relative;
-            overflow: visible;
-            font-weight: 500;
-        }
-
-        .watch-btn::before {
-            content: '';
-            position: absolute;
-            inset: 1px;
-            background: linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.2) 0%, 
-                transparent 25%, 
-                transparent 75%,
-                rgba(0, 0, 0, 0.08) 100%);
-            border-radius: 24px;
-            pointer-events: none;
-        }
-
-        .watch-btn::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 50%);
-            border-radius: 26px;
-            pointer-events: none;
+            transition: all 0.3s;
         }
 
         .watch-btn:hover {
-            background: linear-gradient(180deg,
-                rgba(255, 69, 0, 0.4) 0%,
-                rgba(255, 69, 0, 0.5) 50%,
-                rgba(255, 69, 0, 0.6) 100%);
-            box-shadow: 0 8px 32px rgba(255, 69, 0, 0.4),
-                        0 1px 3px rgba(255, 255, 255, 0.3) inset,
-                        0 -1px 3px rgba(0, 0, 0, 0.15) inset,
-                        0 15px 50px rgba(255, 69, 0, 0.15);
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .watch-btn:active {
-            transform: translateY(-1px) scale(0.98);
-            box-shadow: 0 4px 16px rgba(255, 69, 0, 0.3),
-                        0 1px 2px rgba(255, 255, 255, 0.2) inset,
-                        0 -1px 2px rgba(0, 0, 0, 0.1) inset;
+            background: #ff4500;
+            color: #fff;
         }
 
         footer {
@@ -486,11 +427,8 @@
         }
 
         .close-btn {
-            background: linear-gradient(180deg,
-                rgba(255, 255, 255, 0.08) 0%,
-                rgba(255, 255, 255, 0.1) 50%,
-                rgba(255, 255, 255, 0.12) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: none;
+            border: none;
             color: #fff;
             font-size: 30px;
             cursor: pointer;
@@ -500,56 +438,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 50%;
-            backdrop-filter: blur(40px) saturate(200%);
-            -webkit-backdrop-filter: blur(40px) saturate(200%);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2),
-                        0 1px 2px rgba(255, 255, 255, 0.25) inset,
-                        0 -1px 2px rgba(0, 0, 0, 0.1) inset;
-            position: relative;
-            overflow: visible;
-        }
-
-        .close-btn::before {
-            content: '';
-            position: absolute;
-            inset: 1px;
-            background: linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.2) 0%, 
-                transparent 25%, 
-                transparent 75%,
-                rgba(0, 0, 0, 0.08) 100%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .close-btn::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 50%);
-            border-radius: 50%;
-            pointer-events: none;
+            transition: all 0.3s;
         }
 
         .close-btn:hover {
-            background: linear-gradient(180deg,
-                rgba(255, 69, 0, 0.3) 0%,
-                rgba(255, 69, 0, 0.4) 50%,
-                rgba(255, 69, 0, 0.5) 100%);
-            color: #fff;
+            color: #ff4500;
             transform: rotate(90deg) scale(1.1);
-            box-shadow: 0 8px 30px rgba(255, 69, 0, 0.35),
-                        0 1px 3px rgba(255, 255, 255, 0.3) inset,
-                        0 -1px 3px rgba(0, 0, 0, 0.15) inset;
-        }
-
-        .close-btn:active {
-            transform: rotate(90deg) scale(1.05);
-            box-shadow: 0 4px 16px rgba(255, 69, 0, 0.3),
-                        0 1px 2px rgba(255, 255, 255, 0.25) inset,
-                        0 -1px 2px rgba(0, 0, 0, 0.1) inset;
         }
 
         .settings-section {
@@ -571,73 +465,26 @@
 
         .language-btn {
             padding: 15px;
-            background: linear-gradient(180deg,
-                rgba(255, 255, 255, 0.06) 0%,
-                rgba(255, 255, 255, 0.08) 50%,
-                rgba(255, 255, 255, 0.1) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             color: #fff;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             font-size: 16px;
             display: flex;
             align-items: center;
             gap: 10px;
-            backdrop-filter: blur(40px) saturate(200%);
-            -webkit-backdrop-filter: blur(40px) saturate(200%);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15),
-                        0 1px 2px rgba(255, 255, 255, 0.2) inset,
-                        0 -1px 2px rgba(0, 0, 0, 0.1) inset;
-            position: relative;
-            overflow: visible;
-        }
-
-        .language-btn::before {
-            content: '';
-            position: absolute;
-            inset: 1px;
-            background: linear-gradient(180deg, 
-                rgba(255, 255, 255, 0.15) 0%, 
-                transparent 20%, 
-                transparent 80%,
-                rgba(0, 0, 0, 0.05) 100%);
-            border-radius: 9px;
-            pointer-events: none;
-        }
-
-        .language-btn::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1), transparent 40%);
-            border-radius: 11px;
-            pointer-events: none;
         }
 
         .language-btn:hover {
-            background: linear-gradient(180deg,
-                rgba(255, 69, 0, 0.2) 0%,
-                rgba(255, 69, 0, 0.25) 50%,
-                rgba(255, 69, 0, 0.3) 100%);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(255, 69, 0, 0.2),
-                        0 1px 3px rgba(255, 255, 255, 0.25) inset,
-                        0 -1px 3px rgba(0, 0, 0, 0.12) inset;
+            background: rgba(255, 69, 0, 0.2);
+            border-color: #ff4500;
         }
 
         .language-btn.active {
-            background: linear-gradient(180deg,
-                rgba(255, 69, 0, 0.3) 0%,
-                rgba(255, 69, 0, 0.4) 50%,
-                rgba(255, 69, 0, 0.5) 100%);
-            box-shadow: 0 8px 30px rgba(255, 69, 0, 0.3),
-                        0 1px 3px rgba(255, 255, 255, 0.3) inset,
-                        0 -1px 3px rgba(0, 0, 0, 0.15) inset;
-        }
-
-        .language-btn:active {
-            transform: translateY(-1px) scale(0.98);
+            background: rgba(255, 69, 0, 0.3);
+            border-color: #ff4500;
         }
 
         @media (max-width: 768px) {
@@ -941,11 +788,11 @@
     </section>
 
     <section class="featured" id="about">
-        <h2 class="section-title">About Us</h2>
+        <h2 class="section-title">เกี่ยวกับเรา</h2>
         <div style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
-            <p style="font-size: 18px; line-height: 1.8; color: #ccc; text-align: center; margin-bottom: 30px;">
+             <p style="font-size: 18px; line-height: 1.8; color: #ccc; text-align: center; margin-bottom: 30px;">
                 Hello everyone! We welcome you to our automotive knowledge-sharing platform. Today we'll discuss and exchange great information about cars, including basic maintenance, safe driving techniques, and little-known facts that many people may not have known before.
-            </p>
+             </p>
             <p style="font-size: 18px; line-height: 1.8; color: #ccc; text-align: center;">
                 We hope this content will be useful to everyone who loves and is interested in cars. Whether you're a beginner who just started using a car or someone who has been driving for a long time, you can apply the knowledge from us to your daily life.
             </p>
@@ -1115,4 +962,3 @@
     </script>
 </body>
 </html>
-
